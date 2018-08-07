@@ -3,9 +3,9 @@ jobs:
   build:
     docker:
       - image: devcafe/cmake-cookbook_ubuntu16.04-intel2018.1
-        #entrypoint:
-        #  - /opt/docker/bin/entrypoint
-        #command: [ "/bin/bash" ]
+        entrypoint:
+          - /opt/docker/bin/entrypoint
+        command: [ "/bin/bash" ]
     steps:
       - checkout
       - run: echo "A first hello from $USER"
