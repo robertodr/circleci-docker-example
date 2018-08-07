@@ -8,6 +8,25 @@ jobs:
         command: [ "/bin/bash" ]
     steps:
       - checkout
+      - run:
+          name: Set up environment
+          command: |
+            export MKLROOT=/opt/intel/compilers_and_libraries_2018.2.199/linux/mkl
+            export MANPATH=/opt/intel/man/common:/opt/intel/compilers_and_libraries_2018.2.199/linux/mpi/man::
+            export INTEL_LICENSE_FILE=/opt/intel/compilers_and_libraries_2018.2.199/linux/licenses:/opt/intel/licenses:/root/intel/licenses
+            export LIBRARY_PATH=/opt/intel/compilers_and_libraries_2018.2.199/linux/compiler/lib/intel64_lin:/opt/intel/compilers_and_libraries_2018.2.199/linux/mkl/lib/intel64_lin:/opt/intel/compilers_and_libraries_2018.2.199/linux/tbb/lib/intel64/gcc4.7:/opt/intel/compilers_and_libraries_2018.2.199/linux/tbb/lib/intel64/gcc4.7
+            export LD_LIBRARY_PATH=/opt/intel/compilers_and_libraries_2018.2.199/linux/compiler/lib/intel64:/opt/intel/compilers_and_libraries_2018.2.199/linux/compiler/lib/intel64_lin:/opt/intel/compilers_and_libraries_2018.2.199/linux/mpi/intel64/lib:/opt/intel/compilers_and_libraries_2018.2.199/linux/mpi/mic/lib:/opt/intel/compilers_and_libraries_2018.2.199/linux/compiler/lib/intel64_lin:/opt/intel/compilers_and_libraries_2018.2.199/linux/mkl/lib/intel64_lin:/opt/intel/compilers_and_libraries_2018.2.199/linux/tbb/lib/intel64/gcc4.7:/opt/intel/compilers_and_libraries_2018.2.199/linux/tbb/lib/intel64/gcc4.7
+            export PSTLROOT=/opt/intel/compilers_and_libraries_2018.2.199/linux/pstl
+            export CPATH=/opt/intel/compilers_and_libraries_2018.2.199/linux/mkl/include:/opt/intel/compilers_and_libraries_2018.2.199/linux/pstl/include:/opt/intel/compilers_and_libraries_2018.2.199/linux/tbb/include:/opt/intel/compilers_and_libraries_2018.2.199/linux/tbb/include
+            export NLSPATH=/opt/intel/compilers_and_libraries_2018.2.199/linux/compiler/lib/intel64/locale/%l_%t/%N:/opt/intel/compilers_and_libraries_2018.2.199/linux/mkl/lib/intel64_lin/locale/%l_%t/%N
+            export TBBROOT=/opt/intel/compilers_and_libraries_2018.2.199/linux/tbb
+            export PATH=/opt/intel/compilers_and_libraries_2018.2.199/linux/bin/intel64:/opt/intel/compilers_and_libraries_2018.2.199/linux/mpi/intel64/bin:$PATH
+            export CLASSPATH=/opt/intel/compilers_and_libraries_2018.2.199/linux/mpi/intel64/lib/mpi.jar
+            export PKG_CONFIG_PATH=/opt/intel/compilers_and_libraries_2018.2.199/linux/mkl/bin/pkgconfig
+            export I_MPI_ROOT=/opt/intel/compilers_and_libraries_2018.2.199/linux/mpi
+            export MATH_ROOT=$MKLROOT
+            export PATH=/opt/cmake/bin:/opt/ninja:/opt/conda/bin:$HOME/.local/bin:$PATH
+            export LD_LIBRARY_PATH=$HOME/.local/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
       - run: echo "A first hello from $PATH"
       - run:
           name: Python dependencies
