@@ -1,133 +1,20 @@
 version: 2
-
 jobs:
-  "intel":
-    docker:
-      - image: devcafe/cmake-cookbook_ubuntu16.04-intel2018.1
-        entrypoint:
-          - /opt/docker/bin/entrypoint
-        command: [ "/bin/bash" ]
-    working_directory: ~/cmake-cookbook
-    steps:
-      #- run:
-      #    name: Set up environment
-      #    command: |
-      #      export MKLROOT=/opt/intel/compilers_and_libraries_2018.2.199/linux/mkl
-      #      export MANPATH=/opt/intel/man/common:/opt/intel/compilers_and_libraries_2018.2.199/linux/mpi/man::
-      #      export INTEL_LICENSE_FILE=/opt/intel/compilers_and_libraries_2018.2.199/linux/licenses:/opt/intel/licenses:/root/intel/licenses
-      #      export LIBRARY_PATH=/opt/intel/compilers_and_libraries_2018.2.199/linux/compiler/lib/intel64_lin:/opt/intel/compilers_and_libraries_2018.2.199/linux/mkl/lib/intel64_lin:/opt/intel/compilers_and_libraries_2018.2.199/linux/tbb/lib/intel64/gcc4.7:/opt/intel/compilers_and_libraries_2018.2.199/linux/tbb/lib/intel64/gcc4.7
-      #      export LD_LIBRARY_PATH=/opt/intel/compilers_and_libraries_2018.2.199/linux/compiler/lib/intel64:/opt/intel/compilers_and_libraries_2018.2.199/linux/compiler/lib/intel64_lin:/opt/intel/compilers_and_libraries_2018.2.199/linux/mpi/intel64/lib:/opt/intel/compilers_and_libraries_2018.2.199/linux/mpi/mic/lib:/opt/intel/compilers_and_libraries_2018.2.199/linux/compiler/lib/intel64_lin:/opt/intel/compilers_and_libraries_2018.2.199/linux/mkl/lib/intel64_lin:/opt/intel/compilers_and_libraries_2018.2.199/linux/tbb/lib/intel64/gcc4.7:/opt/intel/compilers_and_libraries_2018.2.199/linux/tbb/lib/intel64/gcc4.7
-      #      export PSTLROOT=/opt/intel/compilers_and_libraries_2018.2.199/linux/pstl
-      #      export CPATH=/opt/intel/compilers_and_libraries_2018.2.199/linux/mkl/include:/opt/intel/compilers_and_libraries_2018.2.199/linux/pstl/include:/opt/intel/compilers_and_libraries_2018.2.199/linux/tbb/include:/opt/intel/compilers_and_libraries_2018.2.199/linux/tbb/include
-      #      export NLSPATH=/opt/intel/compilers_and_libraries_2018.2.199/linux/compiler/lib/intel64/locale/%l_%t/%N:/opt/intel/compilers_and_libraries_2018.2.199/linux/mkl/lib/intel64_lin/locale/%l_%t/%N
-      #      export TBBROOT=/opt/intel/compilers_and_libraries_2018.2.199/linux/tbb
-      #      export PATH=/opt/intel/compilers_and_libraries_2018.2.199/linux/bin/intel64:/opt/intel/compilers_and_libraries_2018.2.199/linux/mpi/intel64/bin:$PATH
-      #      export CLASSPATH=/opt/intel/compilers_and_libraries_2018.2.199/linux/mpi/intel64/lib/mpi.jar
-      #      export PKG_CONFIG_PATH=/opt/intel/compilers_and_libraries_2018.2.199/linux/mkl/bin/pkgconfig
-      #      export I_MPI_ROOT=/opt/intel/compilers_and_libraries_2018.2.199/linux/mpi
-      #      export MATH_ROOT=$MKLROOT
-      #      export PATH=/opt/cmake/bin:/opt/ninja:/opt/conda/bin:$HOME/.local/bin:$PATH
-      #      export LD_LIBRARY_PATH=$HOME/.local/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
-      - checkout
-      - run:
-          name: Python dependencies
-          command: |
-            pip install --user pipenv --upgrade pip
-            pipenv install --three
-      - run:
-          name: Report
-          command: |
-            pipenv run python --version
-      - run:
-          name: Testing
-          command: |
-            pipenv run python testing/collect_tests.py 'chapter-0[1-7]/recipe-*'
-            pipenv run python testing/collect_tests.py 'chapter-08/recipe-0(1|3|4|6)'
-            pipenv run python testing/collect_tests.py 'chapter-08/recipe-0(2|5)'
-            pipenv run python testing/collect_tests.py 'chapter-10/recipe-*'
-            pipenv run python testing/collect_tests.py 'chapter-11/recipe-01*'
-            pipenv run python testing/collect_tests.py 'chapter-11/recipe-02'
-            pipenv run python testing/collect_tests.py 'chapter-11/recipe-03'
-            pipenv run python testing/collect_tests.py 'chapter-12/recipe-*'
-            pipenv run python testing/collect_tests.py 'chapter-13/recipe-*'
-            pipenv run python testing/collect_tests.py 'chapter-14/recipe-*'
-
-  "intel-conda":
-    docker:
-      - image: devcafe/cmake-cookbook_ubuntu16.04-intel2018.1
-    working_directory: ~/cmake-cookbook
-    steps:
-      - checkout
-      - run:
-          name: Python dependencies
-          command: |
-            pip install --user pipenv --upgrade pip
-            pipenv install --three
-      - run:
-          name: Report
-          command: |
-            pipenv run python --version
-      - run:
-          name: Testing
-          command: |
-            pipenv run python testing/collect_tests.py 'chapter-11/recipe-04'
-            pipenv run python testing/collect_tests.py 'chapter-11/recipe-05'
-
-  "pgi":
-    docker:
-      - image: devcafe/cmake-cookbook_ubuntu16.04-pgi17.4
-    working_directory: ~/cmake-cookbook
-    steps:
-      - checkout
-      - run:
-          name: Python dependencies
-          command: |
-            pip install --user pipenv --upgrade pip
-            pipenv install --three
-      - run:
-          name: Report
-          command: |
-            pipenv run python --version
-      - run:
-          name: Testing
-          command: |
-            pipenv run python testing/collect_tests.py 'chapter-0[1-7]/recipe-*'
-            pipenv run python testing/collect_tests.py 'chapter-08/recipe-0(1|3|4|6)'
-            pipenv run python testing/collect_tests.py 'chapter-08/recipe-0(2|5)'
-            pipenv run python testing/collect_tests.py 'chapter-10/recipe-*'
-            pipenv run python testing/collect_tests.py 'chapter-11/recipe-01*'
-            pipenv run python testing/collect_tests.py 'chapter-11/recipe-02'
-            pipenv run python testing/collect_tests.py 'chapter-11/recipe-03'
-            pipenv run python testing/collect_tests.py 'chapter-12/recipe-*'
-            pipenv run python testing/collect_tests.py 'chapter-13/recipe-*'
-            pipenv run python testing/collect_tests.py 'chapter-14/recipe-*'
-
-  "pgi-conda":
-    docker:
-      - image: devcafe/cmake-cookbook_ubuntu16.04-pgi17.4
-    working_directory: ~/cmake-cookbook
-    steps:
-      - checkout
-      - run:
-          name: Python dependencies
-          command: |
-            pip install --user pipenv --upgrade pip
-            pipenv install --three
-      - run:
-          name: Report
-          command: |
-            pipenv run python --version
-      - run:
-          name: Testing
-          command: |
-            pipenv run python testing/collect_tests.py 'chapter-11/recipe-04'
-            pipenv run python testing/collect_tests.py 'chapter-11/recipe-05'
-
-workflows:
-  version: 2
   build:
-    jobs:
-      - "intel"
-#      - "intel-conda"
-#      - "pgi"
-#      - "pgi-conda"
+    docker:
+      - image: devcafe/cmake-cookbook_ubuntu16.04-intel2018.1
+        #entrypoint:
+        #  - /opt/docker/bin/entrypoint
+        #command: [ "/bin/bash" ]
+    steps:
+      - checkout
+      - run: echo "A first hello from $USER"
+      - run:
+          name: Python dependencies
+          command: |
+            pip install --user pipenv --upgrade pip
+            pipenv install --three
+      - run:
+          name: Report
+          command: |
+            pipenv run python --version
