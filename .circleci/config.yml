@@ -18,17 +18,16 @@ jobs:
           PKG_CONFIG_PATH: "/opt/intel/compilers_and_libraries_2018.2.199/linux/mkl/bin/pkgconfig"
           I_MPI_ROOT: "/opt/intel/compilers_and_libraries_2018.2.199/linux/mpi"
           MATH_ROOT: "$MKLROOT"
-          PATH: "/opt/cmake/bin:/opt/ninja:/opt/conda/bin:$HOME/.local/bin:$PATH"
-          LD_LIBRARY_PATH: "$HOME/.local/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+          PATH: "/opt/cmake/bin:/opt/ninja:/opt/conda/bin:/root/.local/bin:$PATH"
+          LD_LIBRARY_PATH: "/root/.local/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
     steps:
       - checkout
       - run: echo "A first hello from $PATH"
       - run:
           name: Python dependencies
           command: |
-            echo $HOME
-            echo $MKLROOT
-            pip install --user pipenv --upgrade pip
+            pip install --upgrade pip --no-warn-script-location
+            pip install pipenv
             pipenv install --three
       - run:
           name: Report
