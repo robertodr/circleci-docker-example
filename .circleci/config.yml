@@ -4,6 +4,7 @@ jobs:
     docker:
       - image: ubuntu:18.04
         entrypoint: "echo Hellllllllloooooo"
+        command: ["/bin/bash"]
     steps:
       - checkout
       - run: echo "A first hello from $PATH"
