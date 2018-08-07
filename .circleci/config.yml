@@ -3,26 +3,23 @@ jobs:
   build:
     docker:
       - image: devcafe/cmake-cookbook_ubuntu16.04-intel2018.1
-        entrypoint:
-          - /opt/docker/bin/entrypoint
-        command: [ "/bin/bash" ]
         environment:
-          - MKLROOT: "/opt/intel/compilers_and_libraries_2018.2.199/linux/mkl"
-          - MANPATH: "/opt/intel/man/common:/opt/intel/compilers_and_libraries_2018.2.199/linux/mpi/man::"
-          - INTEL_LICENSE_FILE: "/opt/intel/compilers_and_libraries_2018.2.199/linux/licenses:/opt/intel/licenses:/root/intel/licenses"
-          - LIBRARY_PATH: "/opt/intel/compilers_and_libraries_2018.2.199/linux/compiler/lib/intel64_lin:/opt/intel/compilers_and_libraries_2018.2.199/linux/mkl/lib/intel64_lin:/opt/intel/compilers_and_libraries_2018.2.199/linux/tbb/lib/intel64/gcc4.7:/opt/intel/compilers_and_libraries_2018.2.199/linux/tbb/lib/intel64/gcc4.7"
-          - LD_LIBRARY_PATH: "/opt/intel/compilers_and_libraries_2018.2.199/linux/compiler/lib/intel64:/opt/intel/compilers_and_libraries_2018.2.199/linux/compiler/lib/intel64_lin:/opt/intel/compilers_and_libraries_2018.2.199/linux/mpi/intel64/lib:/opt/intel/compilers_and_libraries_2018.2.199/linux/mpi/mic/lib:/opt/intel/compilers_and_libraries_2018.2.199/linux/compiler/lib/intel64_lin:/opt/intel/compilers_and_libraries_2018.2.199/linux/mkl/lib/intel64_lin:/opt/intel/compilers_and_libraries_2018.2.199/linux/tbb/lib/intel64/gcc4.7:/opt/intel/compilers_and_libraries_2018.2.199/linux/tbb/lib/intel64/gcc4.7"
-          - PSTLROOT: "/opt/intel/compilers_and_libraries_2018.2.199/linux/pstl"
-          - CPATH: "/opt/intel/compilers_and_libraries_2018.2.199/linux/mkl/include:/opt/intel/compilers_and_libraries_2018.2.199/linux/pstl/include:/opt/intel/compilers_and_libraries_2018.2.199/linux/tbb/include:/opt/intel/compilers_and_libraries_2018.2.199/linux/tbb/include"
-          - NLSPATH: "/opt/intel/compilers_and_libraries_2018.2.199/linux/compiler/lib/intel64/locale/%l_%t/%N:/opt/intel/compilers_and_libraries_2018.2.199/linux/mkl/lib/intel64_lin/locale/%l_%t/%N"
-          - TBBROOT: "/opt/intel/compilers_and_libraries_2018.2.199/linux/tbb"
-          - PATH: "/opt/intel/compilers_and_libraries_2018.2.199/linux/bin/intel64:/opt/intel/compilers_and_libraries_2018.2.199/linux/mpi/intel64/bin:$PATH"
-          - CLASSPATH: "/opt/intel/compilers_and_libraries_2018.2.199/linux/mpi/intel64/lib/mpi.jar"
-          - PKG_CONFIG_PATH: "/opt/intel/compilers_and_libraries_2018.2.199/linux/mkl/bin/pkgconfig"
-          - I_MPI_ROOT: "/opt/intel/compilers_and_libraries_2018.2.199/linux/mpi"
-          - MATH_ROOT: "$MKLROOT"
-          - PATH: "/opt/cmake/bin:/opt/ninja:/opt/conda/bin:$HOME/.local/bin:$PATH"
-          - LD_LIBRARY_PATH: "$HOME/.local/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+          MKLROOT: "/opt/intel/compilers_and_libraries_2018.2.199/linux/mkl"
+          MANPATH: "/opt/intel/man/common:/opt/intel/compilers_and_libraries_2018.2.199/linux/mpi/man::"
+          INTEL_LICENSE_FILE: "/opt/intel/compilers_and_libraries_2018.2.199/linux/licenses:/opt/intel/licenses:/root/intel/licenses"
+          LIBRARY_PATH: "/opt/intel/compilers_and_libraries_2018.2.199/linux/compiler/lib/intel64_lin:/opt/intel/compilers_and_libraries_2018.2.199/linux/mkl/lib/intel64_lin:/opt/intel/compilers_and_libraries_2018.2.199/linux/tbb/lib/intel64/gcc4.7:/opt/intel/compilers_and_libraries_2018.2.199/linux/tbb/lib/intel64/gcc4.7"
+          LD_LIBRARY_PATH: "/opt/intel/compilers_and_libraries_2018.2.199/linux/compiler/lib/intel64:/opt/intel/compilers_and_libraries_2018.2.199/linux/compiler/lib/intel64_lin:/opt/intel/compilers_and_libraries_2018.2.199/linux/mpi/intel64/lib:/opt/intel/compilers_and_libraries_2018.2.199/linux/mpi/mic/lib:/opt/intel/compilers_and_libraries_2018.2.199/linux/compiler/lib/intel64_lin:/opt/intel/compilers_and_libraries_2018.2.199/linux/mkl/lib/intel64_lin:/opt/intel/compilers_and_libraries_2018.2.199/linux/tbb/lib/intel64/gcc4.7:/opt/intel/compilers_and_libraries_2018.2.199/linux/tbb/lib/intel64/gcc4.7"
+          PSTLROOT: "/opt/intel/compilers_and_libraries_2018.2.199/linux/pstl"
+          CPATH: "/opt/intel/compilers_and_libraries_2018.2.199/linux/mkl/include:/opt/intel/compilers_and_libraries_2018.2.199/linux/pstl/include:/opt/intel/compilers_and_libraries_2018.2.199/linux/tbb/include:/opt/intel/compilers_and_libraries_2018.2.199/linux/tbb/include"
+          NLSPATH: "/opt/intel/compilers_and_libraries_2018.2.199/linux/compiler/lib/intel64/locale/%l_%t/%N:/opt/intel/compilers_and_libraries_2018.2.199/linux/mkl/lib/intel64_lin/locale/%l_%t/%N"
+          TBBROOT: "/opt/intel/compilers_and_libraries_2018.2.199/linux/tbb"
+          PATH: "/opt/intel/compilers_and_libraries_2018.2.199/linux/bin/intel64:/opt/intel/compilers_and_libraries_2018.2.199/linux/mpi/intel64/bin:$PATH"
+          CLASSPATH: "/opt/intel/compilers_and_libraries_2018.2.199/linux/mpi/intel64/lib/mpi.jar"
+          PKG_CONFIG_PATH: "/opt/intel/compilers_and_libraries_2018.2.199/linux/mkl/bin/pkgconfig"
+          I_MPI_ROOT: "/opt/intel/compilers_and_libraries_2018.2.199/linux/mpi"
+          MATH_ROOT: "$MKLROOT"
+          PATH: "/opt/cmake/bin:/opt/ninja:/opt/conda/bin:$HOME/.local/bin:$PATH"
+          LD_LIBRARY_PATH: "$HOME/.local/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
     steps:
       - checkout
       - run: echo "A first hello from $PATH"
