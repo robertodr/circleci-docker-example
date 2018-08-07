@@ -26,6 +26,8 @@ jobs:
       - run:
           name: Python dependencies
           command: |
+            echo $HOME
+            echo $MKLROOT
             pip install --user pipenv --upgrade pip
             pipenv install --three
       - run:
