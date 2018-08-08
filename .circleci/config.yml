@@ -10,12 +10,12 @@ jobs:
           shell: /bin/bash
           name: Set up Intel env vars
           command: |
-            whoami
-            echo 'export HATE="I HATE YOU"' >> $BASH_ENV
-            source $BASH_ENV
-            echo $HATE
-            ls -lhtr /opt/intel/bin
-            which source
-            echo $HATE
+            #whoami
+            #echo 'export HATE="I HATE YOU"' >> $BASH_ENV
+            #source $BASH_ENV
+            #echo $HATE
+            #ls -lhtr /opt/intel/bin
+            #which source
+            #echo $HATE
             source /opt/intel/bin/compilervars.sh -arch intel64 -platform linux
             echo $MKLROOT
