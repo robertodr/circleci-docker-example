@@ -5,7 +5,7 @@ jobs:
       - image: robertodr/fuffa
         entrypoint:
           - /opt/docker/bin/entrypoint
-        #command: ["/opt/docker/bin/entrypoint"]
+        command: ["/bin/bash"]
     steps:
       - checkout
       - run: echo "A first hello from $PATH"
