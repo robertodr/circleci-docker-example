@@ -7,6 +7,7 @@ jobs:
     steps:
       - checkout
       - run:
+          shell: /bin/bash
           name: Set up Intel env vars
           command: |
             whoami
@@ -15,5 +16,6 @@ jobs:
             echo $HATE
             ls -lhtr /opt/intel/bin
             which source
+            echo $HATE
             source /opt/intel/bin/compilervars.sh -arch intel64 -platform linux
             echo $MKLROOT
