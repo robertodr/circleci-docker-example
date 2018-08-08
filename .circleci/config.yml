@@ -5,5 +5,10 @@ jobs:
       - image: robertodr/fuffa
     steps:
       - checkout
-      - run: echo "A first hello from $PATH"
-      - run: python3 --version
+      - run:
+          name: Well
+          command: |
+            echo "A first hello from $PATH"
+            python3 --version
+            pip install --upgrade pip pipenv
+            pipenv help
