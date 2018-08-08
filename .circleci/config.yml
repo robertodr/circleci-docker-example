@@ -13,5 +13,7 @@ jobs:
             echo 'export HATE="I HATE YOU"' >> $BASH_ENV
             source $BASH_ENV
             echo $HATE
+            ls -lhtr /opt/intel/bin
+            which source
             source /opt/intel/bin/compilervars.sh -arch intel64 -platform linux
             echo $MKLROOT
