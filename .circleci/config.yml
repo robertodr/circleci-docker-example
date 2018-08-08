@@ -6,7 +6,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Well
+          name: Set up Intel env vars
           command: |
-            echo "A first hello from $PATH"
-            pipenv
+            . /opt/intel/bin/compilervars.sh -arch intel64 -platform linux
