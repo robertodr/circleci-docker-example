@@ -10,5 +10,5 @@ jobs:
           command: |
             echo "A first hello from $PATH"
             python3 --version
-            pip install --upgrade pip pipenv
+            pip3 install pipenv
             pipenv help
