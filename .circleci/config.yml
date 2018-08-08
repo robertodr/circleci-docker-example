@@ -3,6 +3,7 @@ jobs:
   build:
     docker:
       - image: devcafe/cmake-cookbook_circleci_ubuntu16.04-intel2018.1
+        user: root
     steps:
       - checkout
       - run:
