@@ -2,13 +2,11 @@ version: 2
 jobs:
   build:
     docker:
-      - image: robertodr/fuffa
+      - image: devcafe/cmake-cookbook_circleci_ubuntu16.04-intel2018.1
     steps:
       - checkout
       - run:
           name: Well
           command: |
             echo "A first hello from $PATH"
-            python3 --version
-            pip3 install pipenv
-            pipenv help
+            pipenv
