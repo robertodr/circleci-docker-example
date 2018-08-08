@@ -5,7 +5,7 @@ jobs:
       - image: robertodr/fuffa
         entrypoint:
           - /opt/docker/bin/entrypoint
-        command: ["/bin/bash", "-c", "echo stocazzo"]
+        #command: ["/bin/bash", "-c", "echo stocazzo"]
     steps:
       - checkout
       - run: echo "A first hello from $PATH"
