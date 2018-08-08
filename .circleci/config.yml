@@ -8,6 +8,8 @@ jobs:
       - run:
           name: Set up Intel env vars
           command: |
-            echo 'source /opt/intel/bin/compilervars.sh -arch intel64 -platform linux' >> $BASH_ENV
+            echo 'export HATE="I HATE YOU"' >> $BASH_ENV
+            #echo 'source /opt/intel/bin/compilervars.sh -arch intel64 -platform linux' >> $BASH_ENV
             source $BASH_ENV
-            echo $MKLROOT
+            echo $HATE
+            #echo $MKLROOT
