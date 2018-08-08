@@ -2,20 +2,13 @@ version: 2
 jobs:
   build:
     docker:
-      - image: devcafe/cmake-cookbook_circleci_ubuntu16.04-intel2018.1
+      - image: devcafe/cmake-cookbook_circleci_ubuntu16.04-pgi17.4
         user: root
     steps:
       - checkout
       - run:
-          shell: /bin/bash
-          name: Set up Intel env vars
+          name: A little check
           command: |
-            #whoami
-            #echo 'export HATE="I HATE YOU"' >> $BASH_ENV
-            #source $BASH_ENV
-            #echo $HATE
-            #ls -lhtr /opt/intel/bin
-            #which source
-            #echo $HATE
-            source /opt/intel/bin/compilervars.sh -arch intel64 -platform linux
-            echo $MKLROOT
+            which pgfortran
+            which pgcc
+            which pgc++
